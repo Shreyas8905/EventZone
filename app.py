@@ -14,7 +14,7 @@ password = os.getenv('MYSQLPASS')
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{username}:{password}@localhost/event_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{username}:{password}@localhost/eventdb'
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -34,7 +34,7 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return render_template(url_for('index.html'))
+    return render_template('index.html')
 
 # Login, Signup, and Authentication routes
 @app.route('/login', methods=['GET', 'POST'])
@@ -106,7 +106,7 @@ def participate(event_id):
     db.session.add(participation)
     db.session.commit()
     flash('You have successfully enrolled in the event!')
-    return redirect(url_for('dashboard'))
+    return render_template('participate.html')
 
 @app.before_request
 def send_reminders():
