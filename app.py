@@ -116,5 +116,12 @@ def send_reminders():
                 msg.body = f"Reminder for your event: {event.name} at {event.place} on {event.date} {event.time}."
                 mail.send(msg)
 
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    upcoming_events = Event.query.filter(Event.date >= datetime.now(), Event.id != current_user.id).all()
+    organized_events = Event.query.filter_by(organizer_id=current_user.id).all()
+    return render_template('dashboard.html', upcoming_events=upcoming_events, organized_events=organized_events)
+
 if __name__ == '__main__':
     app.run(debug=True)
