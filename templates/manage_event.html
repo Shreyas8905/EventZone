@@ -5,54 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
     <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, rgba(240, 240, 240, 0.8), rgba(220, 220, 220, 0.9)), url('bgnew1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #4b3c31;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        form {
-            margin: 20px 0;
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
+
+        /* Heading */
+        h2 {
+            font-size: 26px;
+            color: #4b3c31;
+            margin-bottom: 20px;
+        }
+
+        /* Form Labels */
         label {
             display: block;
-            margin: 10px 0 5px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #4b3c31;
         }
-        input, button {
-            padding: 10px;
+
+        /* Input Fields */
+        input {
             width: 100%;
-            max-width: 400px;
-            margin-bottom: 20px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
+            transition: border 0.3s ease;
         }
+
+        input:focus {
+            border: 1px solid #8e735b;
+            outline: none;
+        }
+
+        /* Button Styling */
         button {
-            background-color: #007BFF;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #8e735b;
             color: white;
-            cursor: pointer;
             border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #7a5c47;
+            transform: translateY(-2px);
         }
+
+        /* Link Styling */
         a {
-            color: #007BFF;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #8e735b;
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
+
         a:hover {
+            color: #5f4329;
             text-decoration: underline;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            input, button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px;
+            }
+
+            input, button {
+                font-size: 12px;
+                padding: 8px;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>Manage Event: {{ event.name }}</h2>
-    <form method="POST">
-        <label for="name">Event Name:</label>
-        <input type="text" id="name" name="name" value="{{ event.name }}" required>
+    <div class="container">
+        <h2>Manage Event: {{ event.name }}</h2>
+        <form method="POST">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name" value="{{ event.name }}" required>
 
-        <label for="place">Place:</label>
-        <input type="text" id="place" name="place" value="{{ event.place }}" required>
+            <label for="place">Place:</label>
+            <input type="text" id="place" name="place" value="{{ event.place }}" required>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" value="{{ event.date }}" required>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="{{ event.date }}" required>
 
-        <label for="time">Time:</label>
-        <
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" value="{{ event.time }}" required>
+
+            <button type="submit">Save Changes</button>
+        </form>
+        <a href="{{ url_for('view_participants', event_id=event.id) }}">View Participants List</a>
+    </div>
+</body>
+</html>
