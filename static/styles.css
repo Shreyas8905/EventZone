@@ -1,425 +1,259 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+/* Color Palette */
+:root {
+  --brown: #8b5e3c;
+  --dark-brown: #5d3b2e;
+  --beige: #f8f5f2;
+  --light-beige: #e8dfd6;
+  --text-gray: #666;
+}
+
+/* Header Section */
+.header {
+  background: var(--brown);
+  color: var(--beige);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--beige);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.nav .btn {
+  background: var(--beige);
+  color: var(--brown);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background 0.3s ease;
+}
+
+.nav .btn:hover {
+  background: var(--light-beige);
+}
+
+/* Hero Section */
+.hero {
+  background: url('../images/hero-background.jpg') no-repeat center center/cover;
+  color: var(--beige);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color:var(--brown);
+}
+
+.hero p {
+  margin-bottom: 20px;
+  color:var(--brown);
+}
+
+.hero-buttons .btn {
+  background: var(--beige);
+  color: var(--brown);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  background: var(--light-beige);
+}
+
+/* How It Works Section */
+.how-it-works {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  color: var(--brown);
+}
+
+.how-it-works .steps {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.how-it-works .step {
+  text-align: center;
+  max-width: 300px;
+}
+
+.how-it-works img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+/* Events Section */
+.events-list {
+  margin-top: 40px;
+}
+
+.events-list h3 {
+  color: var(--brown);
+  font-size: 22px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.event {
+  background: #f1f1f1;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event h4 {
+  color: var(--brown);
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.event p {
+  color: var(--text-gray);
+  font-size: 14px;
+}
+
+/* Auth Form Section */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: url('../images/bgnew1.jpeg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.form-container {
+  background: var(--light-beige);
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-container h2 {
+  color: var(--dark-brown);
+  margin-bottom: 20px;
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-container form input,
+.form-container form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-container form .btn {
+  background: var(--dark-brown);
+  color: var(--beige);
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.form-container form .btn:hover {
+  background: #452e1f;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--brown);
+  color: var(--beige);
+  font-size: 14px;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--beige);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--light-beige);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .header {
-    background: #8b5e3c; /* Brown */
-    color: #f8f5f2; /* Beige */
-    padding: 10px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .header .logo h1 {
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-  
-  .contact-info {
-    font-size: 14px;
-    text-align: right;
-  }
-  
-  .contact-info span {
-    display: inline-block;
-    margin: 5px 0;
-  }
-  /* Styling for the header */
-header {
-    background: #5d3b2e; /* Dark brown background */
-    padding: 20px;
-    color: white;
-    text-align: center;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: center; /* Centers the navigation items horizontally */
-    align-items: center; /* Aligns items vertically */
-  }
-  
-  ul {
-    list-style-type: none; /* Removes the default list style */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Displays the list items in a row */
-  }
-  
-  ul li {
-    margin: 0 15px; /* Adds spacing between list items */
-  }
-  
-  ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background 0.3s ease; /* Smooth transition for hover effect */
-  }
-  
-  ul li a:hover {
-    background-color: #452e1f; /* Lighter brown color for hover effect */
-  }
-  
-  ul li a.btn {
-    background-color: #5d3b2e; /* Brown button color */
-  }
-  
-  ul li a.btn:hover {
-    background-color: #452e1f; /* Darker brown on hover */
-  }
-  
-  
-  .nav {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .nav a {
-    color: #f8f5f2;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-  }
-  
-  .nav .btn {
-    background: #f8f5f2;
-    color: #8b5e3c;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-left: 10px;
-  }
-  
-  .nav .btn:hover {
-    background: #e8dfd6;
-  }
-  
-  .nav .login-btn {
-    margin-right: 5px;
-  }
-  .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background: url('../images/bgnew1.jpeg');
-    background-size: cover;
-    height: 100vh;
-    box-sizing: border-box;
-  }
-  
-  .form-container {
-    background: #e8dfd6;
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .form-container h2 {
-    color: #5d3b2e;
-    margin-bottom: 20px;
-    font-size: 28px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .form-container form input,
-  .form-container form textarea {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  .form-container form textarea {
-    resize: vertical;
-  }
-  
-  .form-container form .btn {
-    background: #5d3b2e;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 16px;
-    transition: background 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .form-container form .btn:hover {
-    background: #452e1f;
-  }
-  
-  .form-container p {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .form-container p a {
-    color: #5d3b2e;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .events-list {
-    margin-top: 40px;
-  }
-  
-  .events-list h3 {
-    color: #5d3b2e;
-    font-size: 22px;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .event {
-    background: #f1f1f1;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .event h4 {
-    color: #5d3b2e;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-  
-  .event p {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .auth-container {
-      padding: 30px 10px;
-    }
-  
-    .form-container {
-      padding: 15px 25px;
-    }
-  
-    .form-container h2 {
-      font-size: 24px;
-    }
-  
-    .form-container form input,
-    .form-container form textarea,
-    .form-container form .btn {
-      font-size: 14px;
-    }
-  
-    .events-list h3 {
-      font-size: 18px;
-    }
-  
-    .event h4 {
-      font-size: 16px;
-    }
-  }
-  
-  
-  
-  
-  /* Responsive Design */
-  @media screen and (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .contact-info {
-      text-align: left;
-      margin-bottom: 10px;
-    }
-  
-    .nav {
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-    }
-  
-    .nav a,
-    .nav .btn {
-      margin: 5px 0;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .header .logo h1 {
-      font-size: 20px;
-    }
-  
-    .nav a {
-      font-size: 12px;
-    }
-  }
-  
-  
-  .nav .btn {
-    background: #f8f5f2; /* Beige button background */
-    color: #8b5e3c; /* Brown text color */
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .nav .btn:hover {
-    background: #e8dfd6; /* Slightly darker beige hover */
-  }
-  
-  /* Hero Section */
-  .hero {
-    background: url('../images/hero-background.jpg') no-repeat center center/cover;
-    color: #f8f5f2;
-    text-align: center;
-    padding: 60px 20px;
-  }
-  
-  .hero h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  
-  .hero p {
-    margin-bottom: 20px;
-  }
-  
-  .hero-buttons .btn {
-    background: #f8f5f2; /* Beige button */
-    color: #8b5e3c; /* Brown text color */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
-  .hero-buttons .btn:hover {
-    background: #e8dfd6; /* Slightly darker beige hover */
-  }
-  
-  /* How It Works */
-  .how-it-works {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .how-it-works h2 {
-    color: #8b5e3c; /* Brown */
-  }
-  
-  .how-it-works .steps {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .how-it-works .step {
-    text-align: center;
-    max-width: 300px;
-  }
-  
-  .how-it-works img {
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  
-  /* Why Post Section */
-  .why-post {
-    background: #5a4e4d; /* Deep brown background */
-    color: #f8f5f2; /* Beige text color */
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .why-post ul {
-    list-style: none;
-    margin-top: 20px;
-    
-  }
-  
-  .why-post li {
-    margin: 10px 0;
-  }
-  
-  /* Signup Section */
-  .signup {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .signup h2 {
-    color: #8b5e3c;
-  }
-  
-  .signup form {
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
-  
-  .signup form input {
-    margin: 10px 0;
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f5f2; /* Beige background for input */
-    color: #5a4e4d; /* Warm brown text */
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
   }
-  
-  .signup-btn {
-    background: #8b5e3c; /* Brown button */
-    color: #f8f5f2; /* Beige text */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+
+  .nav a,
+  .nav .btn {
+    margin: 5px 0;
+    width: 100%;
+    text-align: left;
   }
-  
-  .signup-btn:hover {
-    background: #5a4e4d; /* Darker brown on hover */
+}
+
+@media screen and (max-width: 480px) {
+  .header .logo h1 {
+    font-size: 20px;
   }
-  
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #8b5e3c; /* Rich brown background */
-    color: #f8f5f2; /* Beige text */
-    font-size: 14px;
+
+  .nav a {
+    font-size: 12px;
   }
-  
-  footer a {
-    color: #f8f5f2;
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    color: #e8dfd6;
-  }
-  
+}

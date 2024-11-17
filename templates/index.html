@@ -3,40 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <title>EventZone</title>
- 
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-          <h1>EventZone</h1>
-        </div>
-        <div class="contact-info">
-         
-        </div>
-        <nav class="nav">
-          <a href="#home">Home</a>
-          <a href="#about">About Us</a>
-          <a href="#contact">Contact Us</a>
-          <div class="nav">
-            <a href="{{ url_for('login') }}" class="btn">Login</a>
-            <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
-          </div>
-        </nav>
-        
-      </header>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="logo">
+      <h1>EventZone</h1>
+    </div>
+    <nav class="nav">
+      <div class="auth-links">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+      </div>
+    </nav>
+  </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h2>The Best Time To Celebrate</h2>
-      <p>Cakes are special. Every birthday, every celebration ends with something sweet, a cake, and people remember.</p>
-      <div class="hero-buttons">
-       
-      </div>
+      <h2>The Best Time to Celebrate</h2>
+      <p>
+        Cakes are special. Every birthday, every celebration ends with something sweet, 
+        a cake, and people remember.
+      </p>
     </div>
   </section>
 
+  <!-- How It Works Section -->
   <section class="how-it-works">
     <h2>How It Works</h2>
     <div class="steps">
@@ -58,35 +53,8 @@
     </div>
   </section>
 
-
-
-  <div class="auth-container">
-    <div class="form-container">
-      <div class="events-list">
-        <h3>Already Added Events</h3>
-        <div class="event">
-          <h4>Event 1: Tech Conference</h4>
-          <p>Date: 2024-12-01</p>
-          <p>Description: A conference on emerging tech trends.</p>
-        </div>
-        <div class="event">
-          <h4>Event 2: AI Workshop</h4>
-          <p>Date: 2024-11-20</p>
-          <p>Description: Workshop on artificial intelligence and its applications.</p>
-        </div>
-        <div class="event">
-          <h4>Event 3: Web Dev Meetup</h4>
-          <p>Date: 2024-11-30</p>
-          <p>Description: Meetup for web developers to discuss trends and technologies.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
   <footer>
     <p>© 20 EventZone.com | Privacy Policy | Terms of Service</p>
   </footer>
-
 </body>
 </html>
