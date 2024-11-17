@@ -5,31 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participants</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        /* Body Styling */
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 240, 225, 0.9)), url('bgnew1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #4b3c31;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        h2 {
+            font-size: 28px;
+            color: #4b3c31;
+            margin-bottom: 20px;
+            text-align: center;
+            margin-left: 500px;
+        }
+
+        /* Table Styling */
         table {
             width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
             border-collapse: collapse;
-            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
         }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+
         th, td {
-            padding: 10px;
+            padding: 14px;
             text-align: left;
+            font-size: 16px;
+            color: #4b3c31;
         }
+
         th {
-            background-color: #f4f4f4;
+            background-color: #8e735b;
+            color: white;
+            text-transform: uppercase;
         }
+
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        td:last-child {
+            border-bottom: none;
+        }
+
+        /* Links Styling */
         a {
-            color: #007BFF;
+            color: #8e735b;
             text-decoration: none;
+            font-weight: bold;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+            font-size: 16px;
         }
+
         a:hover {
             text-decoration: underline;
+            color: #5f4329;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
         }
     </style>
 </head>
