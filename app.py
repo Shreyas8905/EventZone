@@ -106,18 +106,32 @@ def manage_event(event_id):
     participants = User.query.join(Participated).filter(Participated.event_id == event_id).all()
     return render_template('manage_event.html', event=event, participants=participants)
 
+# @app.route('/participate/<int:event_id>')
+# @login_required
+# def participate(event_id):
+#     existing_participation = Participated.query.filter_by(user_id=current_user.id, event_id=event_id).first()
+#     if existing_participation:
+#         flash('You are already enrolled in this event!')
+#         return redirect(url_for('dashboard'))
+#     participation = Participated(user_id=current_user.id, event_id=event_id)
+#     db.session.add(participation)
+#     db.session.commit()
+#     flash('You have successfully enrolled in the event!')
+#     return render_template('participate.html')
+
 @app.route('/participate/<int:event_id>')
 @login_required
 def participate(event_id):
     existing_participation = Participated.query.filter_by(user_id=current_user.id, event_id=event_id).first()
+
     if existing_participation:
-        flash('You are already enrolled in this event!')
-        return redirect(url_for('dashboard'))
+        flash('You are already enrolled in this event!', 'warning')
+        return render_template('participate.html', event_id=event_id)
     participation = Participated(user_id=current_user.id, event_id=event_id)
     db.session.add(participation)
     db.session.commit()
-    flash('You have successfully enrolled in the event!')
-    return render_template('participate.html')
+    flash('You have successfully enrolled in the event!', 'success')
+    return render_template('participate.html', event_id=event_id)  
 
 @app.before_request
 def send_reminders():

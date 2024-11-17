@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Participation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Event Participation</h1>
+    <div class="container">
+        <h1 class="mt-4">Event Participation</h1>
 
-    <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-    </div>
+        <!-- Flash Messages -->
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="list-unstyled">
+                        {% for category, message in messages %}
+                            <li class="alert alert-{{ 'success' if category == 'success' else 'warning' }} mt-2">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
 
-    <p>Would you like to enroll in this event?</p>
+        <p>Thank you for your interest in this event!</p>
+        <p><strong>Event ID:</strong> {{ event_id }}</p>
 
-    <div>
-        <a href="{{ url_for('participate', event_id=event_id) }}">Confirm Participation</a>
-        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+        <div class="mt-3">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
     </div>
 </body>
 </html>
