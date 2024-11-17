@@ -257,3 +257,9 @@ footer a:hover {
     font-size: 12px;
   }
 }
+
+.content-wrapper {
+  min-height: calc(100vh - 80px); /* Full viewport height minus the footer height */
+  display: flex;
+  flex-direction: column;
+}
