@@ -179,23 +179,27 @@
             </tr>
         </thead>
         <tbody>
-            {% for event in upcoming_events %}
-                <tr>
-                    <td>{{ event.name }}</td>
-                    <td>{{ event.place }}</td>
-                    <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
-                    <td>{{ event.time.strftime('%H:%M') }}</td>
-                    <td>
-                        <a href="{{ url_for('participate', event_id=event.id) }}">Participate</a>
-                    </td>
-                </tr>
+            {% if upcoming_events %}
+                {% for event in upcoming_events %}
+                    {% if event.organizer_id != current_user.id %}
+                    <tr>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.place }}</td>
+                        <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ event.time.strftime('%H:%M') }}</td>
+                        <td>
+                            <a href="{{ url_for('participate', event_id=event.id) }}">Participate</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
             {% else %}
                 <tr>
                     <td colspan="5">No upcoming events available.</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
         </tbody>
-    </table>
+
 
     <h2>Organized Events</h2>
     <table>
