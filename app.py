@@ -34,7 +34,7 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return redirect(url_for('login'))
+    return render_template(url_for('index.html'))
 
 # Login, Signup, and Authentication routes
 @app.route('/login', methods=['GET', 'POST'])
