@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, session
-from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_mail import Mail, Message
@@ -98,10 +97,14 @@ def manage_event(event_id):
 @app.route('/participate/<int:event_id>')
 @login_required
 def participate(event_id):
+    existing_participation = Participated.query.filter_by(user_id=current_user.id, event_id=event_id).first()
+    if existing_participation:
+        flash('You are already enrolled in this event!')
+        return redirect(url_for('dashboard'))
     participation = Participated(user_id=current_user.id, event_id=event_id)
     db.session.add(participation)
     db.session.commit()
-    flash('You have successfully enrolled!')
+    flash('You have successfully enrolled in the event!')
     return redirect(url_for('dashboard'))
 
 @app.before_request
@@ -115,6 +118,7 @@ def send_reminders():
                 msg = Message('Event Reminder', sender='your_email@gmail.com', recipients=[user.email])
                 msg.body = f"Reminder for your event: {event.name} at {event.place} on {event.date} {event.time}."
                 mail.send(msg)
+
 
 
 if __name__ == '__main__':

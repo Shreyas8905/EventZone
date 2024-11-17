@@ -1,0 +1,8 @@
+flask
+flask-bcrypt
+flask-sqlalchemy
+python-dotenv
+flask-login
+flask-mail
+datetime
+os
