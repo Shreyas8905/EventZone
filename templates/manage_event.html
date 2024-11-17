@@ -2,24 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Event</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, button {
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h2>Create Event</h2>
+    <h2>Manage Event: {{ event.name }}</h2>
     <form method="POST">
         <label for="name">Event Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
+        <input type="text" id="name" name="name" value="{{ event.name }}" required>
+
         <label for="place">Place:</label>
-        <input type="text" id="place" name="place" required>
-        <br>
+        <input type="text" id="place" name="place" value="{{ event.place }}" required>
+
         <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
-        <br>
+        <input type="date" id="date" name="date" value="{{ event.date }}" required>
+
         <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required>
-        <br>
-        <button type="submit">Create Event</button>
-    </form>
-</body>
-</html>
+        <

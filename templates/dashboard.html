@@ -217,7 +217,7 @@
                     <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
                     <td>{{ event.time.strftime('%H:%M') }}</td>
                     <td>
-                        <a href="{{ url_for('manage_event', event_id=event.id) }}">View Participants</a>
+                        <a href="{{ url_for('view_participants', event_id=event.id) }}">View Participants</a>
                     </td>
                     <td>
                         <a href="{{ url_for('manage_event', event_id=event.id) }}">Manage</a>

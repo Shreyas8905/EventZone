@@ -92,7 +92,18 @@ def manage_event(event_id):
     if event.organizer_id != current_user.id:
         flash('Unauthorized access!')
         return redirect(url_for('dashboard'))
-    participants = Participated.query.filter_by(event_id=event.id).all()
+
+    if request.method == 'POST':
+        # Update the event details
+        event.name = request.form['name']
+        event.place = request.form['place']
+        event.date = datetime.strptime(request.form['date'], '%Y-%m-%d')
+        event.time = datetime.strptime(request.form['time'], '%H:%M').time()
+        db.session.commit()
+        flash('Event updated successfully!')
+        return redirect(url_for('dashboard'))
+
+    participants = User.query.join(Participated).filter(Participated.event_id == event_id).all()
     return render_template('manage_event.html', event=event, participants=participants)
 
 @app.route('/participate/<int:event_id>')
@@ -119,6 +130,17 @@ def send_reminders():
                 msg = Message('Event Reminder', sender='your_email@gmail.com', recipients=[user.email])
                 msg.body = f"Reminder for your event: {event.name} at {event.place} on {event.date} {event.time}."
                 mail.send(msg)
+@app.route('/view_participants/<int:event_id>')
+@login_required
+def view_participants(event_id):
+    event = Event.query.get_or_404(event_id)
+    if event.organizer_id != current_user.id:
+        flash('Unauthorized access!')
+        return redirect(url_for('dashboard'))
+
+    participants = User.query.join(Participated).filter(Participated.event_id == event_id).all()
+    return render_template('view_participants.html', event=event, participants=participants)
+
 
 
 
