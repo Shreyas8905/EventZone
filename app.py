@@ -98,7 +98,12 @@ def manage_event(event_id):
         event.name = request.form['name']
         event.place = request.form['place']
         event.date = datetime.strptime(request.form['date'], '%Y-%m-%d')
-        event.time = datetime.strptime(request.form['time'], '%H:%M').time()
+        # Extract hours and minutes, ignoring any extra seconds
+        time_str = request.form['time'].split(':')[0:2]
+
+# Convert the time string back to a datetime object and store the time part
+        event.time = datetime.strptime(':'.join(time_str), '%H:%M').time()
+
         db.session.commit()
         flash('Event updated successfully!')
         return redirect(url_for('dashboard'))
