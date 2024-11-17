@@ -2,29 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h2>Welcome, {{ current_user.name }}</h2>
-    <a href="{{ url_for('create_event') }}">Create Event</a>
+    <h1>Welcome, {{ current_user.name }}</h1>
+
+    <h2>Upcoming Events</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Place</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in upcoming_events %}
+                <tr>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.place }}</td>
+                    <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ event.time.strftime('%H:%M') }}</td>
+                    <td>
+                        <a href="{{ url_for('participate', event_id=event.id) }}">Participate</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No upcoming events available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Organized Events</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Place</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in organized_events %}
+                <tr>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.place }}</td>
+                    <td>{{ event.date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ event.time.strftime('%H:%M') }}</td>
+                    <td>
+                        <a href="{{ url_for('manage_event', event_id=event.id) }}">View Participants</a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('manage_event', event_id=event.id) }}">Manage</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">You have not organized any events yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('create_event') }}">Create a New Event</a>
+    <br>
     <a href="{{ url_for('logout') }}">Logout</a>
-    <h3>Upcoming Events</h3>
-    <ul>
-        {% for event in upcoming_events %}
-            <li>
-                {{ event.name }} at {{ event.place }} on {{ event.date }} {{ event.time }}
-                <a href="{{ url_for('participate', event_id=event.id) }}">Participate</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <h3>Your Organized Events</h3>
-    <ul>
-        {% for event in organized_events %}
-            <li>
-                {{ event.name }} at {{ event.place }} on {{ event.date }} {{ event.time }}
-                <a href="{{ url_for('manage_event', event_id=event.id) }}">Manage</a>
-            </li>
-        {% endfor %}
-    </ul>
 </body>
 </html>
