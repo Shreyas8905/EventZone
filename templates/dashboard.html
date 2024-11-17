@@ -4,13 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 240, 225, 0.9)), url('bgnew1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #4b3c31;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            flex-direction: column;
+            padding: 30px 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #8e735b;
+            font-size: 36px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            color: #4b3c31;
+            font-size: 28px;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            color: #6e4b3a;
+        }
+
+        th {
+            background-color: #8e735b;
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        td a {
+            color: #8e735b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+            color: #5f4329;
+        }
+
+        td[colspan="5"], td[colspan="6"] {
+            text-align: center;
+            color: #6e4b3a;
+        }
+
+        .action-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .action-links a {
+            background-color: #8e735b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .action-links a:hover {
+            background-color: #7a5c47;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #8e735b;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+            color: #5f4329;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .action-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-links a {
+                width: 100%;
+                text-align: center;
+                padding: 14px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            .action-links a {
+                padding: 14px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <h1>Welcome, {{ current_user.name }}</h1>
 
     <h2>Upcoming Events</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Event Name</th>
@@ -40,7 +198,7 @@
     </table>
 
     <h2>Organized Events</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Event Name</th>
@@ -73,8 +231,14 @@
         </tbody>
     </table>
 
-    <a href="{{ url_for('create_event') }}">Create a New Event</a>
-    <br>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div class="action-links">
+        <a href="{{ url_for('create_event') }}">Create a New Event</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="back-link">
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
 </body>
 </html>
+
