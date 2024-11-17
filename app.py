@@ -19,8 +19,8 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your_email@gmail.com'
-app.config['MAIL_PASSWORD'] = 'your_email_password'
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
@@ -130,6 +130,8 @@ def send_reminders():
                 msg = Message('Event Reminder', sender='your_email@gmail.com', recipients=[user.email])
                 msg.body = f"Reminder for your event: {event.name} at {event.place} on {event.date} {event.time}."
                 mail.send(msg)
+
+
 @app.route('/view_participants/<int:event_id>')
 @login_required
 def view_participants(event_id):
