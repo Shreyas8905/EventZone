@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ current_user.name }}</h2>
+    <a href="{{ url_for('create_event') }}">Create Event</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Upcoming Events</h3>
+    <ul>
+        {% for event in upcoming_events %}
+            <li>
+                {{ event.name }} at {{ event.place }} on {{ event.date }} {{ event.time }}
+                <a href="{{ url_for('participate', event_id=event.id) }}">Participate</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Your Organized Events</h3>
+    <ul>
+        {% for event in organized_events %}
+            <li>
+                {{ event.name }} at {{ event.place }} on {{ event.date }} {{ event.time }}
+                <a href="{{ url_for('manage_event', event_id=event.id) }}">Manage</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
