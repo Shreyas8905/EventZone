@@ -1,2 +1,2 @@
 # EventZone
-Authors: Shreyas, Neha, Chandu, Faria and Pratyusha
+Authors: Shreyas, Neha, Chandu, Faria, Abhinand and Pratyusha
